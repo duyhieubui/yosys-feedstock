@@ -17,7 +17,7 @@ source:
     - system-slang.patch
 
 build:
-  number: 0
+  number: 1
   skip: win
 
 requirements:
@@ -55,7 +55,8 @@ requirements:
     - libffi
     - libzlib
     - readline
-    - ${{ pin_compatible('slang-verilog', upper_bound='x') }}
+    # Slang 12.2 is not ABI-compatible with the 12.0 headers used here.
+    - ${{ pin_compatible('slang-verilog', upper_bound='x.x') }}
     - tk
   ignore_run_exports:
     by_name:
